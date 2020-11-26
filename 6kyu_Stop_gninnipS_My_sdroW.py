@@ -1,4 +1,3 @@
-
 """
 Write a function that takes in a string of one or more words, and returns the same string,
 but with all five or more letter words reversed (Just like the name of this Kata).
@@ -14,8 +13,9 @@ spinWords( "This is another test" )=> returns "This is rehtona test"
 https://www.codewars.com/kata/5264d2b162488dc400000001
 """
 
+
 def spin_words(sentence):
-    a=sentence.split()
+    a = sentence.split()
     answer = ""
 
     for i in a:
