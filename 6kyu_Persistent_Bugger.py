@@ -26,15 +26,15 @@ For example:
  """
  
  
- def persistence(n):
-    cnt = 0
-    b = n
+def persistence(n):
+   cnt = 0
+   b = n
     
     
-    while b > 9:
-        a = 1
-        for i in str(b):
-            a *= int(i)
-        b = a
-        cnt += 1
-    return cnt
+   while b > 9:
+       a = 1
+       for i in str(b):
+           a *= int(i)
+       b = a
+       cnt += 1
+   return cnt
