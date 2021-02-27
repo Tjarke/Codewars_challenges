@@ -22,5 +22,3 @@ def iq_test(numbers):
             odd.append(i+1)
     ans = even if len(even)<len(odd) else odd
     return int(ans[0])
-
-iq_test("2 4 7 8 10")
