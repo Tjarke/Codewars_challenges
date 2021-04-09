@@ -1,32 +1,43 @@
 
 """
-Count the number of Duplicates
+Create a function that takes a Roman numeral as its argument and returns its value as a numeric decimal integer. You don't need to validate the form of the Roman numeral.
 
-Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
-Example
+Modern Roman numerals are written by expressing each decimal digit of the number to be encoded separately, starting with the leftmost digit and skipping any 0s. So 1990 is rendered "MCMXC" (1000 = M, 900 = CM, 90 = XC) and 2008 is rendered "MMVIII" (2000 = MM, 8 = VIII). The Roman numeral for 1666, "MDCLXVI", uses each letter in descending order.
 
-"abcde" -> 0 # no characters repeats more than once
-"aabbcde" -> 2 # 'a' and 'b'
-"aabBcde" -> 2 # 'a' occurs twice and 'b' twice (`b` and `B`)
-"indivisibility" -> 1 # 'i' occurs six times
-"Indivisibilities" -> 2 # 'i' occurs seven times and 's' occurs twice
-"aA11" -> 2 # 'a' and '1'
-"ABBA" -> 2 # 'A' and 'B' each occur twice
+Example:
 
+solution('XXI') # should return 21
 
+Help:
 
-https://www.codewars.com/kata/54bf1c2cd5b56cc47f0007a1
+Symbol    Value
+I          1
+V          5
+X          10
+L          50
+C          100
+D          500
+M          1,000
 
 """
 
-def duplicate_count(text):
-    
-    duplicates = 0
-    
-    set(text)
-    
-    for i in set(text.lower()):
-        if text.lower().count(i)>1:
-            duplicates += 1
+symbols= {
+"I" : 1,
+"V" : 5,
+"X" : 10,
+"L" : 50,
+"C" : 100,
+"D" : 500,
+"M" : 1_000}
 
-    return duplicates     
+
+def solution(roman):
+    n = 0
+    for i in range(len(roman)-1):
+        l = roman[i]
+        if symbols[l] >= symbols[roman[i+1]]:
+            n += symbols[l]
+        else:
+            n -= symbols[l]
+    return n + symbols[roman[-1]]
+    
