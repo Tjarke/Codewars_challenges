@@ -58,16 +58,13 @@ number of fixed points = k
 See the example tests! Enjoy it!!
 
 """
-
-def iq_test(numbers):
-    n = numbers.split()
-    even = []
-    odd = []
-    for i,j in enumerate(n):
-        k = int(j)
-        if k%2 == 0:
-            even.append(i+1)
-        else:
-            odd.append(i+1)
-    ans = even if len(even)<len(odd) else odd
-    return int(ans[0])
+def fixed_points_perms(n, k):
+    if k > n:
+        return 0
+    if k == n:
+        return 1
+    if k == 0:
+        subf = lambda n: 1 if n == 0 else n * subf(n - 1) + (-1)**n
+        return subf(n)
+    return fixed_points_perms(n-1, k-1) * n // k
+    
