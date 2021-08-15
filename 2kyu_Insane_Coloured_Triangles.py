@@ -50,7 +50,7 @@ triangle('RBRGBRBGGRRRBGBBBGG') == 'G'
 From Paper: Soltions with length n = 3^s +1 where s is a positive integer are dependent only on start and end colour
 """
 final_row = [2, 4, 10, 28, 82, 244, 730, 2188, 6562, 19684, 59050]
-colours  = {'R','G','B'}
+colours = {'R', 'G', 'B'}
 
 
 def next(row):
@@ -60,30 +60,27 @@ def next(row):
         return a
     else:
         return (colours - {a, b}).pop()
-    
+
+
 def next3(row):
     new_row = ""
     for i in range(2):
         new_row += next(row[i]+row[i+1])
     return next(new_row)
-        
+
 
 def triangle(row):
     new_row = ""
-    print(row)
-    print(f"with lenght {len(row)}\n_______")
-    # if len(row) > 28:
-    #     print(f"with lenght {len(row)}\n_______")
     while len(row) > 1:
         for i in final_row[::-1]:
-            if len(row)%i == 0:
+            if len(row) % i == 0:
                 return next(row)
             elif len(row) == 3:
                 return next3(row)
             if i < len(row):
                 n = len(row)-i+1
                 break
-        # print(f"last element {row[n*-1:]}")
+
         new_row = triangle(row[0:n]) + triangle(row[n*-1:])
         row = new_row
         new_row = ""
