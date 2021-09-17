@@ -34,20 +34,19 @@ def is_merge(s, part1, part2):
         part2 = [1]
 
     for i in s:
+       
+        if (i !=  part1[cnt1]) & (i !=  part2[cnt2]) & (len(cur1) > 0) & (len(cur2) > 0):
+            if (i == cur1[-1]) & (i == cur2[-1]):
+                cnt2 -= len(cur2)
+                cur2 = []
+                cur1 = []
+        
         if (i == part1[cnt1]) & (not p1_complete):
             cur1.append(i)
             cnt1 += 1
         if (i == part2[cnt2]) & (not p2_complete):
             cur2.append(i)
             cnt2 += 1
-            
-        if (i !=  part1[cnt1]) & (i !=  part2[cnt2]):
-            print(cur1)
-            print(cur2)
-            if (i == cur1[-1]) & (i == cur2[-1]):
-                cnt2 -= len(cur2)
-                cur2 = []
-                cur1 = []
             
         if cur1 != cur2:
             if cur1 > cur2:
@@ -66,27 +65,12 @@ def is_merge(s, part1, part2):
         elif cnt2 == len(part2):
             p2_complete = True
             cnt2 = 0
-        print(f'i = {i}     p1 = {part1[cnt1]}    p2 = {part2[cnt2]}')
-        # print(part2[cnt2])
     if part1[0] == 1:
         part1 = []
     if part2[0] == 1:
         part2 = []
     
-    print(f'p1_c = {p1_complete}    p2_c = {p2_complete}  l1 = {len(part1)} l2 = {len(part2)} ls = {len(s)}')
-    
     if p1_complete & p2_complete & (len(part1) + len(part2) == len(s)):
         return True
     else:
         return False
-
-
-# print(is_merge('codewars', 'code', 'wars'))
-print(is_merge('q;<^homggoza&1dX_t', '^gz_', 'q;<homgoa&1dXt'))
-# print(1 =='e'[0])
-# print('sss')
-# print(s)
-# print('111')
-# print(part1)
-# print('2222')
-# print(part2)
