@@ -14,4 +14,9 @@ You'll need to get a little clever with performance, since n can be a very large
 
 
 def f(n, m):
-  #My function body is ready
+    if m > n:
+        return n * (n + 1) / 2
+    until_m = (m - 1) * ((m - 1) + 1) / 2
+    number_of_times = n // m
+    rest = n % m
+    return until_m * number_of_times + rest * (rest + 1) / 2
